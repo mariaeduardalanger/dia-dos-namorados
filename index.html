@@ -46,7 +46,6 @@
         h3 { font-size: 1rem; }
         p { font-size: 0.7rem; line-height: 1.8; text-align: justify; }
 
-        /* Estilo de caixas de texto estilo videogame */
         .game-box {
             border: 4px solid var(--text-color);
             box-shadow: 6px 6px 0px var(--main-color);
@@ -55,7 +54,6 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Ficha de Personagens (Lado a lado) */
         .stats-container {
             display: flex;
             flex-direction: column;
@@ -101,7 +99,6 @@
             color: var(--main-color);
         }
 
-        /* Linha do Tempo / Quest Log */
         .quest-log {
             text-align: left;
         }
@@ -116,7 +113,6 @@
             margin-bottom: 5px;
         }
 
-        /* Botões e Inputs */
         button {
             font-family: 'Press Start 2P', cursive;
             background-color: var(--main-color);
@@ -157,7 +153,6 @@
             box-shadow: none;
         }
 
-        /* Seções Escondidas por padrão */
         #secret-stage {
             display: none;
         }
@@ -191,12 +186,11 @@
 
         <div class="game-box" style="padding: 15px; border-color: var(--secondary-color); box-shadow: 4px 4px 0px var(--main-color);">
             <h3 style="font-size: 0.6rem; margin-bottom: 15px; text-align: center;">🎵 TRILHA SONORA DA FASE</h3>
-            <<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1cMFYGtNoh5x3hCWrHAVca?utm_source=generator&si=ca9ef2dc8fa74466" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1idv6G2V8vALfXG66Z3S7p" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
 
         <h2>📊 CHARACTER STATS</h2>
         <div class="stats-container">
-            
             <div class="player-card">
                 <h3>PLAYER 1 (Eu)</h3>
                 <ul>
@@ -220,7 +214,6 @@
 
         <h2>📜 QUEST LOG (Nossa História)</h2>
         <div class="game-box quest-log">
-            
             <div class="quest-item">
                 <div class="quest-date">07/04/2026</div>
                 <p><strong>Missão Inicial: O Tutorial.</strong> O dia em que nossos caminhos se cruzaram. Eu não sabia, mas estava desbloqueando a fase mais incrível da minha vida.</p>
@@ -235,7 +228,6 @@
                 <div class="quest-date">Hoje</div>
                 <p><strong>Missão do Dia: Dia dos Namorados.</strong> Celebrar a melhor dupla que esse mundo já viu. Status: Em andamento. Recompensa: Uma surpresa interativa logo abaixo.</p>
             </div>
-
         </div>
 
         <h2>🛡️ DESAFIO DO CHEFE</h2>
@@ -303,7 +295,7 @@
             }
         }
 
-        // 2. Configuração do Easter Egg (Palavra-chave: AMOR)
+        // 2. Configuração do Easter Egg Limpo e sem caracteres ocultos
         const secretCode = ['a', 'm', 'o', 'r'];
         let inputCode = [];
 
@@ -317,11 +309,9 @@
         });
 
         function activateCheatMode() {
-            // Muda as cores do site para o Modo Deus (Verde e Roxo Neon)
             document.documentElement.style.setProperty('--main-color', '#00ff66');
             document.documentElement.style.setProperty('--secondary-color', '#ff00ff');
             
-            // Cria a janela flutuante secreta
             const cheatAlert = document.createElement('div');
             cheatAlert.style.position = 'fixed';
             cheatAlert.style.top = '50%';
