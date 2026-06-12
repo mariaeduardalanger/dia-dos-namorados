@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player 1 + Player 2: Co-Op Mode</title>
-    <!-- Importando a fonte estilo Pixel Art do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -180,7 +179,6 @@
 
     <div class="container">
         
-        <!-- Tela de Início / Cabeçalho -->
         <header class="game-box">
             <h1>CO-OP MODE: ACTIVATED</h1>
             <p style="text-align: center; margin-top: 20px; color: var(--secondary-color);">
@@ -191,11 +189,14 @@
             </p>
         </header>
 
-        <!-- Ficha de Status dos Personagens -->
+        <div class="game-box" style="padding: 15px; border-color: var(--secondary-color); box-shadow: 4px 4px 0px var(--main-color);">
+            <h3 style="font-size: 0.6rem; margin-bottom: 15px; text-align: center;">🎵 TRILHA SONORA DA FASE</h3>
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1cMFYGtNoh5x3hCWrHAVca?utm_source=generator&si=cbec1df09d214a2d" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
         <h2>📊 CHARACTER STATS</h2>
         <div class="stats-container">
             
-            <!-- CARD SEU (PLAYER 1) - Altere os detalhes abaixo se quiser -->
             <div class="player-card">
                 <h3>PLAYER 1 (Eu)</h3>
                 <ul>
@@ -206,7 +207,6 @@
                 </ul>
             </div>
 
-            <!-- CARD DA OUTRA PESSOA (PLAYER 2) - Altere os detalhes abaixo -->
             <div class="player-card">
                 <h3>PLAYER 2 (Você)</h3>
                 <ul>
@@ -218,7 +218,6 @@
             </div>
         </div>
 
-        <!-- Linha do Tempo / Quest Log -->
         <h2>📜 QUEST LOG (Nossa História)</h2>
         <div class="game-box quest-log">
             
@@ -228,7 +227,7 @@
             </div>
 
             <div class="quest-item">
-                <div class="quest-date">[14/04/2026</div>
+                <div class="quest-date">14/04/2026</div>
                 <p><strong>Quest Concluída: Primeiro Beijo.</strong> O coração bateu mais rápido que o processador de um PC Gamer rodando tudo no ultra. Drop do boss: Um sentimento inexplicável.</p>
             </div>
 
@@ -239,32 +238,26 @@
 
         </div>
 
-        <!-- Mini-Game / Quiz Interativo -->
         <h2>🛡️ DESAFIO DO CHEFE</h2>
         <div class="game-box" id="quiz-stage">
             <h3>Acerte a pergunta para desbloquear o prêmio final:</h3>
-            <!-- Mude a pergunta abaixo se preferir -->
             <p style="text-align: center; margin-bottom: 20px; color: var(--secondary-color);">
                 Qual é o nosso maior plano de cooperação / sonho juntos?
             </p>
             
             <div class="quiz-options">
-                <!-- Substitua as opções abaixo por coisas engraçadas de vocês -->
                 <button class="quiz-btn" onclick="checkAnswer(false)">A) Zerar todos os jogos do mundo sem dar rage.</button>
                 <button class="quiz-btn" onclick="checkAnswer(false)">B) Deixar a Jade dormir junto com a gente.</button>
-                <!-- A alternativa com (true) deve ser a resposta certa -->
                 <button class="quiz-btn" onclick="checkAnswer(true)">C) Continuar construindo a nossa história e sermos muito felizes.</button>
                 <button class="quiz-btn" onclick="checkAnswer(false)">D) Comer seu estrogonofe de frango para sempre.</button>
             </div>
             <div id="feedback-msg"></div>
         </div>
 
-        <!-- Seção Secreta (Só aparece quando acertar o Quiz) -->
         <div id="secret-stage" class="game-box" style="border-color: var(--main-color); box-shadow: 6px 6px 0px var(--secondary-color);">
             <h2 style="color: var(--secondary-color); text-shadow: none;">✨ YOU WIN! ✨</h2>
             <h3 style="margin-bottom: 30px;">O prêmio: Meu amor eterno por você.</h3>
             
-            <!-- Sua carta de amor principal fica aqui -->
             <p>Querido Pedro,</p>
             <p>Dizem que jogos são melhores quando jogados em modo cooperativo, e viver a vida ao seu lado me provou que isso é a mais pura verdade. Você é a minha dupla perfeita, meu Player 2 para todas as horas, fases difíceis e chefões que a rotina coloca no nosso caminho.</p>
             <p>Não precisamos de gráficos em alta definição ou de fotos perfeitas para registrar o que temos, porque cada momento engraçado, cada conversa de madrugada e cada apoio que damos um ao outro ficam salvos no melhor "save game" que existe: a nossa memória.</p>
@@ -276,13 +269,14 @@
         </div>
 
         <div class="footer">
-            Desenvolvido com ❤️ pelo seu Player 1 • 2026
+            Desenvolvido com ❤️ pelo seu Player 1 • 2026 <br><br>
+            <span style="color: #444; font-size: 0.45rem;">Dica de Gamer: Tente digitar "amor" no teclado enquanto estiver na página... ⌨️</span>
         </div>
 
     </div>
 
-    <!-- Script JavaScript para controlar o mini-quiz -->
     <script>
+        // 1. Função do Mini-Quiz
         function checkAnswer(isCorrect) {
             const feedback = document.getElementById('feedback-msg');
             const secretStage = document.getElementById('secret-stage');
@@ -292,17 +286,14 @@
                 feedback.style.color = "#00f0ff";
                 feedback.innerHTML = "CRITICAL HIT! Resposta Correta! 🎉";
                 
-                // Pequeno delay para a pessoa ver que acertou e abrir a surpresa
                 setTimeout(() => {
                     quizStage.style.display = "none";
                     secretStage.style.display = "block";
-                    // Rola a página suavemente para a carta
                     secretStage.scrollIntoView({ behavior: 'smooth' });
                 }, 1000);
 
             } else {
                 feedback.style.color = "#ff2a74";
-                // Respostas de erro aleatórias para ficar divertido
                 const errMsgs = [
                     "HP reduzido! Tente outra vez! ❌",
                     "Errou! O boss bloqueou seu ataque! ⚔️",
@@ -310,6 +301,53 @@
                 ];
                 feedback.innerHTML = errMsgs[Math.floor(Math.random() * errMsgs.length)];
             }
+        }
+
+        // 2. Configuração do Easter Egg (Palavra-chave: AMOR)
+        const secretCode = ['a', 'm', 'o', 'r'];
+        let inputCode = [];
+
+        window.addEventListener('keydown', (e) => {
+            inputCode.push(e.key.toLowerCase());
+            inputCode = inputCode.slice(-secretCode.length);
+            
+            if (JSON.stringify(inputCode) === JSON.stringify(secretCode)) {
+                activateCheatMode();
+            }
+        });
+
+        function activateCheatMode() {
+            // Muda as cores do site para o Modo Deus (Verde e Roxo Neon)
+            document.documentElement.style.setProperty('--main-color', '#00ff66');
+            document.documentElement.style.setProperty('--secondary-color', '#ff00ff');
+            
+            // Cria a janela flutuante secreta
+            const cheatAlert = document.createElement('div');
+            cheatAlert.style.position = 'fixed';
+            cheatAlert.style.top = '50%';
+            cheatAlert.style.left = '50%';
+            cheatAlert.style.transform = 'translate(-50%, -50%)';
+            cheatAlert.style.background = '#000000';
+            cheatAlert.style.border = '4px solid #00ff66';
+            cheatAlert.style.padding = '30px';
+            cheatAlert.style.zIndex = '9999';
+            cheatAlert.style.textAlign = 'center';
+            cheatAlert.style.boxShadow = '0px 0px 20px #00ff66';
+            cheatAlert.style.width = '80%';
+            cheatAlert.style.maxWidth = '500px';
+            
+            cheatAlert.innerHTML = `
+                <h2 style="color: #00ff66; text-shadow: none; margin-bottom: 15px; font-size: 1rem;">⚠️ CHEAT ACTIVATED ⚠️</h2>
+                <p style="font-size: 0.65rem; color: #fff; line-height: 1.8; text-align: justify;">
+                    <strong>[MODO DEUS ATIVADO]</strong><br><br>
+                    Você digitou o código secreto! Isso prova que você conhece muito bem o seu Player 1. <br><br>
+                    Bônus desbloqueado: Meu amor por você acabou de ganhar um multiplicador de 999x no servidor. 
+                    Você é, com certeza absoluta, a minha pessoa favorita no mundo inteiro! ❤️
+                </p>
+                <button onclick="this.parentElement.remove()" style="background: #00ff66; border-color: #fff; color: #000; font-size: 0.6rem; margin-top: 15px; box-shadow: none;">Fechar X</button>
+            `;
+            
+            document.body.appendChild(cheatAlert);
         }
     </script>
 </body>
