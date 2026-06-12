@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player 1 + Player 2: Co-Op Mode</title>
+    <!-- Importando a fonte estilo Pixel Art do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b071a;
+            --main-color: #ff2a74;
+            --secondary-color: #00f0ff;
+            --text-color: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Press Start 2P', cursive;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: var(--main-color);
+            text-shadow: 3px 3px 0px var(--bg-color), 5px 5px 0px var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        h1 { font-size: 1.8rem; }
+        h2 { font-size: 1.3rem; margin-top: 50px; }
+        h3 { font-size: 1rem; }
+        p { font-size: 0.7rem; line-height: 1.8; text-align: justify; }
+
+        /* Estilo de caixas de texto estilo videogame */
+        .game-box {
+            border: 4px solid var(--text-color);
+            box-shadow: 6px 6px 0px var(--main-color);
+            padding: 20px;
+            margin: 30px 0;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Ficha de Personagens (Lado a lado) */
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        @media (min-width: 600px) {
+            .stats-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .player-card { width: 45%; }
+        }
+
+        .player-card {
+            border: 4px solid var(--secondary-color);
+            padding: 15px;
+            background: #120e2e;
+            text-align: left;
+        }
+
+        .player-card h3 {
+            color: var(--secondary-color);
+            text-shadow: none;
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 2px dashed var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        .player-card ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.6rem;
+        }
+
+        .player-card li {
+            margin-bottom: 12px;
+        }
+
+        .player-card span {
+            color: var(--main-color);
+        }
+
+        /* Linha do Tempo / Quest Log */
+        .quest-log {
+            text-align: left;
+        }
+        .quest-item {
+            margin-bottom: 25px;
+            border-left: 4px solid var(--main-color);
+            padding-left: 15px;
+        }
+        .quest-date {
+            font-size: 0.6rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Botões e Inputs */
+        button {
+            font-family: 'Press Start 2P', cursive;
+            background-color: var(--main-color);
+            color: white;
+            border: 4px solid white;
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--secondary-color);
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+            box-shadow: 4px 4px 0px var(--main-color);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .quiz-btn {
+            background-color: transparent;
+            border: 2px solid var(--text-color);
+            box-shadow: none;
+            width: 100%;
+            max-width: 400px;
+            font-size: 0.6rem;
+            padding: 12px;
+        }
+
+        .quiz-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: none;
+        }
+
+        /* Seções Escondidas por padrão */
+        #secret-stage {
+            display: none;
+        }
+
+        #feedback-msg {
+            font-size: 0.6rem;
+            margin-top: 15px;
+            min-height: 20px;
+        }
+
+        .footer {
+            font-size: 0.5rem;
+            color: #666;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Tela de Início / Cabeçalho -->
+        <header class="game-box">
+            <h1>CO-OP MODE: ACTIVATED</h1>
+            <p style="text-align: center; margin-top: 20px; color: var(--secondary-color);">
+                👾 PLAYER 1 + PLAYER 2 👾
+            </p>
+            <p style="text-align: center; font-size: 0.6rem;">
+                Carregando a campanha mais bonita da minha vida...
+            </p>
+        </header>
+
+        <!-- Ficha de Status dos Personagens -->
+        <h2>📊 CHARACTER STATS</h2>
+        <div class="stats-container">
+            
+            <!-- CARD SEU (PLAYER 1) - Altere os detalhes abaixo se quiser -->
+            <div class="player-card">
+                <h3>PLAYER 1 (Eu)</h3>
+                <ul>
+                    <li><span>Classe:</span> Player Apaixonado</li>
+                    <li><span>Habilidade:</span> Te dar o melhor cafuné do servidor.</li>
+                    <li><span>Poder Especial:</span> Te dar um abraço de urso enquanto você dorme.</li>
+                    <li><span>Fraqueza:</span> Ficar triste quando estou de tpm.</li>
+                </ul>
+            </div>
+
+            <!-- CARD DA OUTRA PESSOA (PLAYER 2) - Altere os detalhes abaixo -->
+            <div class="player-card">
+                <h3>PLAYER 2 (Você)</h3>
+                <ul>
+                    <li><span>Classe:</span> Dono do Meu Coração</li>
+                    <li><span>Habilidade:</span> Curar 100% do meu estresse com a metralhadora de beijos.</li>
+                    <li><span>Poder Especial:</span> Conseguir tudo o que quer de mim com um sorriso encantador.</li>
+                    <li><span>Fraqueza:</span> Chorar sempre que se emociona.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Linha do Tempo / Quest Log -->
+        <h2>📜 QUEST LOG (Nossa História)</h2>
+        <div class="game-box quest-log">
+            
+            <div class="quest-item">
+                <div class="quest-date">07/04/2026</div>
+                <p><strong>Missão Inicial: O Tutorial.</strong> O dia em que nossos caminhos se cruzaram. Eu não sabia, mas estava desbloqueando a fase mais incrível da minha vida.</p>
+            </div>
+
+            <div class="quest-item">
+                <div class="quest-date">[14/04/2026</div>
+                <p><strong>Quest Concluída: Primeiro Beijo.</strong> O coração bateu mais rápido que o processador de um PC Gamer rodando tudo no ultra. Drop do boss: Um sentimento inexplicável.</p>
+            </div>
+
+            <div class="quest-item">
+                <div class="quest-date">Hoje</div>
+                <p><strong>Missão do Dia: Dia dos Namorados.</strong> Celebrar a melhor dupla que esse mundo já viu. Status: Em andamento. Recompensa: Uma surpresa interativa logo abaixo.</p>
+            </div>
+
+        </div>
+
+        <!-- Mini-Game / Quiz Interativo -->
+        <h2>🛡️ DESAFIO DO CHEFE</h2>
+        <div class="game-box" id="quiz-stage">
+            <h3>Acerte a pergunta para desbloquear o prêmio final:</h3>
+            <!-- Mude a pergunta abaixo se preferir -->
+            <p style="text-align: center; margin-bottom: 20px; color: var(--secondary-color);">
+                Qual é o nosso maior plano de cooperação / sonho juntos?
+            </p>
+            
+            <div class="quiz-options">
+                <!-- Substitua as opções abaixo por coisas engraçadas de vocês -->
+                <button class="quiz-btn" onclick="checkAnswer(false)">A) Zerar todos os jogos do mundo sem dar rage.</button>
+                <button class="quiz-btn" onclick="checkAnswer(false)">B) Deixar a Jade dormir junto com a gente.</button>
+                <!-- A alternativa com (true) deve ser a resposta certa -->
+                <button class="quiz-btn" onclick="checkAnswer(true)">C) Continuar construindo a nossa história e sermos muito felizes.</button>
+                <button class="quiz-btn" onclick="checkAnswer(false)">D) Comer seu estrogonofe de frango para sempre.</button>
+            </div>
+            <div id="feedback-msg"></div>
+        </div>
+
+        <!-- Seção Secreta (Só aparece quando acertar o Quiz) -->
+        <div id="secret-stage" class="game-box" style="border-color: var(--main-color); box-shadow: 6px 6px 0px var(--secondary-color);">
+            <h2 style="color: var(--secondary-color); text-shadow: none;">✨ YOU WIN! ✨</h2>
+            <h3 style="margin-bottom: 30px;">O prêmio: Meu amor eterno por você.</h3>
+            
+            <!-- Sua carta de amor principal fica aqui -->
+            <p>Querido Pedro,</p>
+            <p>Dizem que jogos são melhores quando jogados em modo cooperativo, e viver a vida ao seu lado me provou que isso é a mais pura verdade. Você é a minha dupla perfeita, meu Player 2 para todas as horas, fases difíceis e chefões que a rotina coloca no nosso caminho.</p>
+            <p>Não precisamos de gráficos em alta definição ou de fotos perfeitas para registrar o que temos, porque cada momento engraçado, cada conversa de madrugada e cada apoio que damos um ao outro ficam salvos no melhor "save game" que existe: a nossa memória.</p>
+            <p>Obrigado por ser essa pessoa incrível, paciente e por aceitar jogar essa vida comigo. Eu te amo muito, hoje e em todas as próximas fases que virão! ❤️</p>
+            
+            <p style="text-align: center; margin-top: 30px; color: var(--main-color); font-size: 0.6rem;">
+                🎮 GAME OVER? NÃO, PRESS START PARA O PRÓXIMO ANO! 🎮
+            </p>
+        </div>
+
+        <div class="footer">
+            Desenvolvido com ❤️ pelo seu Player 1 • 2026
+        </div>
+
+    </div>
+
+    <!-- Script JavaScript para controlar o mini-quiz -->
+    <script>
+        function checkAnswer(isCorrect) {
+            const feedback = document.getElementById('feedback-msg');
+            const secretStage = document.getElementById('secret-stage');
+            const quizStage = document.getElementById('quiz-stage');
+
+            if (isCorrect) {
+                feedback.style.color = "#00f0ff";
+                feedback.innerHTML = "CRITICAL HIT! Resposta Correta! 🎉";
+                
+                // Pequeno delay para a pessoa ver que acertou e abrir a surpresa
+                setTimeout(() => {
+                    quizStage.style.display = "none";
+                    secretStage.style.display = "block";
+                    // Rola a página suavemente para a carta
+                    secretStage.scrollIntoView({ behavior: 'smooth' });
+                }, 1000);
+
+            } else {
+                feedback.style.color = "#ff2a74";
+                // Respostas de erro aleatórias para ficar divertido
+                const errMsgs = [
+                    "HP reduzido! Tente outra vez! ❌",
+                    "Errou! O boss bloqueou seu ataque! ⚔️",
+                    "Quase! Mas o inventário diz que essa não é a resposta certa. 🎒"
+                ];
+                feedback.innerHTML = errMsgs[Math.floor(Math.random() * errMsgs.length)];
+            }
+        }
+    </script>
+</body>
+</html>
