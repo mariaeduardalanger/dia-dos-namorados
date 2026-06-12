@@ -184,9 +184,17 @@
             </p>
         </header>
 
-        <div class="game-box" style="padding: 15px; border-color: var(--secondary-color); box-shadow: 4px 4px 0px var(--main-color);">
+        <div class="game-box" style="padding: 20px; border-color: var(--secondary-color); box-shadow: 4px 4px 0px var(--main-color); display: flex; flex-direction: column; align-items: center;">
             <h3 style="font-size: 0.6rem; margin-bottom: 15px; text-align: center;">🎵 TRILHA SONORA DA FASE</h3>
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1idv6G2V8vALfXG66Z3S7p" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            
+            <audio controls style="width: 100%; max-width: 400px; filter: invert(1) hue-rotate(180deg); margin-top: 5px;">
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                Seu navegador não suporta o reprodutor de áudio.
+            </audio>
+            
+            <p style="font-size: 0.5rem; text-align: center; margin-top: 10px; color: var(--secondary-color);">
+                (Clique no Play para ativar a música de fundo da fase!)
+            </p>
         </div>
 
         <h2>📊 CHARACTER STATS</h2>
@@ -295,7 +303,7 @@
             }
         }
 
-        // 2. Configuração do Easter Egg Limpo e sem caracteres ocultos
+        // 2. Configuração do Easter Egg limpa e estável
         const secretCode = ['a', 'm', 'o', 'r'];
         let inputCode = [];
 
